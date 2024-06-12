@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Login Page</title>
+    <link rel="icon" href="c:\Users\ASUS\OneDrive\Pictures\PSAU.png" type="png">
+   
+    <style>
+        body {
+            background-image: url('IMG20231231104125.jpg');
+            background-size: cover;
+            color: #000;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(6, 6, 6, 0.85); /* More opaque background for better visibility */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            width: 400px;
+            max-width: 90%;
+            color: #ffffff; /* Darker text color for better contrast */
+            position: relative; /* Added for password hint positioning */
+        }
+
+        .container h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.9); /* More opaque input fields */
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            color: #000; /* Darker text color for input fields */
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        .form-control.error {
+            border-color: #f00;
+        }
+
+        .btn-primary {
+            background-color: #00ff00;
+            border: none;
+            border-radius: 5px;
+            color: #000;
+            font-weight: bold;
+            padding: 15px;
+            width: 100%;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: #00cc00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        .btn-signup {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            padding: 15px;
+            width: 100%;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .btn-signup:hover {
+            background-color: #0056b3;
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+        }
+
+        .forgot-password-link {
+            color: #007bff;
+        }
+
+        .forgot-password-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <h2>Log In Account</h2>
+        <form id="login-form">
+            <input type="text" class="form-control" placeholder="First Name" id="FirstName">
+            <input type="text" class="form-control" placeholder="Middle Name" id="MiddleName">
+            <input type="text" class="form-control" placeholder="Last Name" id="LastName">
+            <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const namesAndLinks = [
+                { firstName: 'Jaymies', middleName: 'M', lastName: 'Bayani', link: 'https://youtube.com/clip/Ugkx-0oW7VLANi4GEkYSaxSKHT6qXrjuUqSQ?si=rh0rHif6JJZbKrK5' },
+                { firstName: 'Jennalyn', middleName: 'M', lastName: 'Manlapaz', link: 'https://youtube.com/clip/UgkxTfL7M28wDrGx7t6DSxI6vCAWLhE26wkC?si=7Cfd6AkBXVc47DRM' },
+                { firstName: 'Kyla', middleName: 'S', lastName: 'Santos', link: ' https://mrdrei.github.io/Flower/' },
+                { firstName: 'Karen', middleName: 'B', lastName: 'Malliari', link: 'https://youtube.com/clip/UgkxTfL7M28wDrGx7t6DSxI6vCAWLhE26wkC?si=7Cfd6AkBXVc47DRM' },
+                { firstName: 'Janessa', middleName: 'G', lastName: 'Cabalo', link: 'https://youtube.com/clip/UgkxTfL7M28wDrGx7t6DSxI6vCAWLhE26wkC?si=7Cfd6AkBXVc47DRM' }
+            ];
+
+            document.getElementById('login-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const FirstName = document.getElementById('FirstName').value;
+                const MiddleName = document.getElementById('MiddleName').value;
+                const LastName = document.getElementById('LastName').value;
+
+                if (!FirstName || !MiddleName || !LastName) {
+                    if (!FirstName) document.getElementById('FirstName').classList.add('error');
+                    if (!MiddleName) document.getElementById('MiddleName').classList.add('error');
+                    if (!LastName) document.getElementById('LastName').classList.add('error');
+                    alert('Please fill up all the fields.');
+                    return;
+                }
+
+                const matchedEntry = namesAndLinks.find(entry =>
+                    entry.firstName === FirstName &&
+                    entry.middleName === MiddleName &&
+                    entry.lastName === LastName
+                );
+
+                if (matchedEntry) {
+                    window.location.href = matchedEntry.link;
+                } else {
+                    alert('Invalid credentials.');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
